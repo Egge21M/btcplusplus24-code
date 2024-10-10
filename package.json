@@ -1,0 +1,22 @@
+{
+  "name": "btcplusplus24-code",
+  "version": "1.0.0",
+  "description": "Practice project for btc++ 24 cashu-ts workshop",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Egge",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "esbuild": "^0.24.0",
+    "nodemon": "^3.1.7",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@cashu/cashu-ts": "^1.1.0",
+    "commander": "^12.1.0"
+  }
+}
