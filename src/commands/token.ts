@@ -1,4 +1,4 @@
-import { Token } from "@cashu/cashu-ts";
+import { getEncodedToken, getEncodedTokenV4, Token } from "@cashu/cashu-ts";
 
 const proofs = [
   {
@@ -29,4 +29,15 @@ const token: Token = {
   token: [{ mint: "https://testnut.cashu.space", proofs }],
 };
 
-export function decodeTokenHandler() {}
+export function encodeTokenHandler(options) {
+  console.log(options);
+  console.log("Raw Token: ", token);
+  console.log("Encoding Token...");
+  if (options.cbor) {
+    console.log("Creating v4 token");
+    console.log(getEncodedTokenV4(token));
+    return;
+  }
+  console.log("Creating v3 token");
+  console.log(getEncodedToken(token));
+}
