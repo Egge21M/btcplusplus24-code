@@ -1,4 +1,10 @@
-import { CashuMint, CashuWallet } from "@cashu/cashu-ts";
+import {
+  CashuMint,
+  CashuWallet,
+  getEncodedTokenV4,
+  Token,
+} from "@cashu/cashu-ts";
+import { sleep } from "../utils";
 
 export async function mintHandler() {
   const mintUrl = "https://testnut.cashu.space";
@@ -8,7 +14,6 @@ export async function mintHandler() {
   console.log("Requesting mint quote...");
   try {
     const quote = await wallet.createMintQuote(21);
-    console.log("Received quote...", quote);
     while (true) {
       console.log("Awaiting payment...");
       const state = await wallet.checkMintQuote(quote.quote);
@@ -16,13 +21,16 @@ export async function mintHandler() {
         console.log(state);
         break;
       }
-      await new Promise((res, rej) => {
-        setTimeout(res, 2000);
-      });
+      await sleep(2000);
     }
     console.log("Quote has been paid");
-    const token = await wallet.mintTokens(21, quote.quote);
-    console.log("Minted Token...", token);
+    const { proofs } = await wallet.mintTokens(21, quote.quote);
+    console.log("Minted Token...", proofs);
+    const tokenData: Token = {
+      memo: "Demo",
+      token: [{ mint: "https://testnut.cashu.space", proofs }],
+    };
+    console.log(getEncodedTokenV4(tokenData));
   } catch (e) {
     console.error(e);
   }
