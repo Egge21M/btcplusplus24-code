@@ -4,6 +4,7 @@ import { mintHandler } from "./commands/mint";
 import { encodeTokenHandler } from "./commands/token";
 import { sendHandler } from "./commands/send";
 import { receiveHandler } from "./commands/receive";
+import { meltHandler } from "./commands/melt";
 
 const program = new Command();
 
@@ -20,5 +21,6 @@ program
   .command("receive")
   .argument("<token>", "token to receive")
   .action(receiveHandler);
+program.command("melt").action(meltHandler);
 
 program.parse();
