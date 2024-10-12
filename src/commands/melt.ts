@@ -13,10 +13,9 @@ export async function meltHandler() {
   const { request: invoice } = await wallet.createMintQuote(2);
   const proofs = await mockGetProofsFromDb();
 
-  const res = await wallet.createMeltQuote(invoice);
-  const { returnChange, send } = await wallet.send(2 + res.fee_reserve, proofs);
-  console.log(returnChange);
-  const payRes = await wallet.meltTokens(res, send);
+  // swap "proofs" into new proofs that cover the invoice amount + fee_reserve
+  // then melt the swapped token to pay the invoice
+
   if (payRes.isPaid) {
     console.log("Payment successfull");
   }
