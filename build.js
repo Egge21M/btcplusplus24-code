@@ -9,8 +9,7 @@ esbuild
     platform: "node",
     entryPoints: ["src/index.ts"],
     bundle: true,
-    sourcemap: "external",
   })
   .then(() => {
-    console.log("Server built sucessfully");
+    console.log("CLI built sucessfully");
   });
