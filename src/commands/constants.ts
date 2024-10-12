@@ -1,1 +1,1 @@
-export const mintUrl = "https://nofees.testnut.cash.space";
+export const mintUrl = "https://nofees.testnut.cashu.space";
