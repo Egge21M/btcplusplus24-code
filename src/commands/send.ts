@@ -11,7 +11,7 @@ export async function sendHandler() {
   console.log(
     getEncodedTokenV4({
       memo: "This is a demo token",
-      token: [{ mint: "", proofs: send }],
+      token: [{ mint: "https://nofees.testnut.cashu.space", proofs: send }],
     }),
   );
 }
