@@ -3,6 +3,7 @@ import { infoHandler } from "./commands/info";
 import { mintHandler } from "./commands/mint";
 import { encodeTokenHandler } from "./commands/token";
 import { sendHandler } from "./commands/send";
+import { receiveHandler } from "./commands/receive";
 
 const program = new Command();
 
@@ -15,5 +16,9 @@ program.command("info").option("-r").action(infoHandler);
 program.command("mint").action(mintHandler);
 program.command("encode").option("--cbor").action(encodeTokenHandler);
 program.command("send").action(sendHandler);
+program
+  .command("receive")
+  .argument("<token>", "token to receive")
+  .action(receiveHandler);
 
 program.parse();
