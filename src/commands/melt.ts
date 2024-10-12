@@ -10,7 +10,9 @@ export async function meltHandler() {
   const proofs = await mockGetProofsFromDb();
 
   const res = await wallet.createMeltQuote(invoice);
-  const payRes = await wallet.meltTokens(res, proofs);
+  const { returnChange, send } = await wallet.send(2 + res.fee_reserve, proofs);
+  console.log(returnChange);
+  const payRes = await wallet.meltTokens(res, send);
   if (payRes.isPaid) {
     console.log("Payment successfull");
   }
