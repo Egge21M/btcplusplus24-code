@@ -1,8 +1,7 @@
 import { CashuMint, CashuWallet } from "@cashu/cashu-ts";
-import { sleep } from "../utils";
+import { mintUrl } from "./constants";
 
 export async function infoHandler(options) {
-  const mintUrl = "https://testnut.cashu.space";
   const mint = new CashuMint(mintUrl);
   const wallet = new CashuWallet(mint);
   const data = await wallet.getMintInfo();

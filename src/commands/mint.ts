@@ -5,13 +5,12 @@ import {
   Token,
 } from "@cashu/cashu-ts";
 import { sleep } from "../utils";
+import { mintUrl } from "./constants";
 
 export async function mintHandler() {
-  const mintUrl = "https://testnut.cashu.space";
   const mint = new CashuMint(mintUrl);
   const wallet = new CashuWallet(mint);
 
-  console.log("Requesting mint quote...");
   try {
     const quote = await wallet.createMintQuote(21);
     while (true) {
@@ -25,10 +24,9 @@ export async function mintHandler() {
     }
     console.log("Quote has been paid");
     const { proofs } = await wallet.mintTokens(21, quote.quote);
-    console.log("Minted Token...", proofs);
     const tokenData: Token = {
       memo: "Demo",
-      token: [{ mint: "https://testnut.cashu.space", proofs }],
+      token: [{ mint: mintUrl, proofs }],
     };
     console.log(getEncodedTokenV4(tokenData));
   } catch (e) {

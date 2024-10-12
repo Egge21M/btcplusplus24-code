@@ -1,4 +1,5 @@
 import { getEncodedToken, getEncodedTokenV4, Token } from "@cashu/cashu-ts";
+import { mintUrl } from "./constants";
 
 const proofs = [
   {
@@ -26,7 +27,7 @@ const proofs = [
 
 const token: Token = {
   memo: "This is the token memo",
-  token: [{ mint: "https://testnut.cashu.space", proofs }],
+  token: [{ mint: mintUrl, proofs }],
 };
 
 export function encodeTokenHandler(options) {
