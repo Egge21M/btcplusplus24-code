@@ -6,6 +6,10 @@ export async function meltHandler() {
   const mint = new CashuMint(mintUrl);
   const wallet = new CashuWallet(mint);
 
+  // here we are simply getting some mock data to work with
+  // we are generating an invoice from the mint as well as getting some
+  // proofs from our mock db
+
   const { request: invoice } = await wallet.createMintQuote(2);
   const proofs = await mockGetProofsFromDb();
 
