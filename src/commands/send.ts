@@ -5,16 +5,16 @@ import { mintUrl } from "./constants";
 export async function sendHandler() {
   const mint = new CashuMint(mintUrl);
   const wallet = new CashuWallet(mint);
-
   const proofs = await mockGetProofsFromDb();
-  const { returnChange, send } = await wallet.send(9, proofs);
-  console.log("=====CHANGE=====");
-  console.log(returnChange);
+
+  // mockGetProofsFromDb will return a single 16 sat proof
+  // send 9 sats by creating an encoded token worth this amount.
+  // assign the output to "toBeSent"
   console.log("=====TO SEND=====");
   console.log(
     getEncodedTokenV4({
       memo: "This is a demo token",
-      token: [{ mint: mintUrl, proofs: send }],
+      token: [{ mint: mintUrl, proofs: toBeSent }],
     }),
   );
 }

@@ -1,4 +1,4 @@
-import { getEncodedToken, getEncodedTokenV4, Token } from "@cashu/cashu-ts";
+import { Token } from "@cashu/cashu-ts";
 import { mintUrl } from "./constants";
 
 const proofs = [
@@ -33,12 +33,12 @@ const token: Token = {
 export function encodeTokenHandler(options) {
   console.log(options);
   console.log("Raw Token: ", token);
-  console.log("Encoding Token...");
+  // options.cbor will be a boolean, if its truthy print the v4 token to the console,
+  // otherwise print the v3 token to the console.
+
   if (options.cbor) {
     console.log("Creating v4 token");
-    console.log(getEncodedTokenV4(token));
     return;
   }
   console.log("Creating v3 token");
-  console.log(getEncodedToken(token));
 }

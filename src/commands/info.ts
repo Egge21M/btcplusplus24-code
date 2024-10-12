@@ -1,10 +1,8 @@
-import { CashuMint, CashuWallet } from "@cashu/cashu-ts";
 import { mintUrl } from "./constants";
 
 export async function infoHandler(options) {
-  const mint = new CashuMint(mintUrl);
-  const wallet = new CashuWallet(mint);
-  const data = await wallet.getMintInfo();
+  // create a CashuWallet and CashuMint class, receive
+  // the info object from them and assign it to data
 
   if (options.r) {
     console.log(data);
